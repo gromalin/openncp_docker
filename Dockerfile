@@ -20,7 +20,8 @@ RUN ln -s /usr/share/java/mysql-connector-java-5.1.39.jar /usr/share/tomcat7/lib
 
 RUN ln -s /var/lib/tomcat7/common/ /usr/share/tomcat7/common && \
   ln -s /var/lib/tomcat7/server/ /usr/share/tomcat7/server && \ 
-  ln -s /var/lib/tomcat7/shared/ /usr/share/tomcat7/shared
+  ln -s /var/lib/tomcat7/shared/ /usr/share/tomcat7/shared && \
+  ln -s /var/lib/tomcat7/conf/ /usr/share/tomcat7/conf
 
 RUN apt-get install -y zip wget
 
@@ -50,7 +51,7 @@ ADD conf/* /opt/epsos-configuration/cert/PPT/conf/
 
 ADD selfcert.sh /opt/epsos-configuration/cert/PPT/
 
-ADD server.xml /etc/tomcat7
+#ADD server.xml /etc/tomcat7
 
 EXPOSE 8080
 
