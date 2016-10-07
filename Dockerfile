@@ -7,7 +7,8 @@ RUN  apt-get clean && \
   apt-get install -y \
   openjdk-7-jdk \ 
   tomcat7-admin \
-  libmysql-java
+  libmysql-java \
+  tomcat7
 
 
 RUN apt-get install -y debconf-utils \
@@ -17,9 +18,9 @@ RUN apt-get install -y debconf-utils \
 
 RUN ln -s /usr/share/java/mysql-connector-java-5.1.39.jar /usr/share/tomcat7/lib/mysql-connector-java-5.1.39.jar
 
-RUN ln -s /var/lib/tomcat7/common/ common && \
-  ln -s /var/lib/tomcat7/server/ server && \ 
-  ln -s /var/lib/tomcat7/shared/ shared
+RUN ln -s /var/lib/tomcat7/common/ /usr/share/tomcat7/common && \
+  ln -s /var/lib/tomcat7/server/ /usr/share/tomcat7/server && \ 
+  ln -s /var/lib/tomcat7/shared/ /usr/share/tomcat7/shared
 
 RUN apt-get install -y zip wget
 
@@ -32,3 +33,25 @@ RUN unzip epsos-configuration.zip\?api\=v2 -d /opt
 RUN rm  epsos-configuration.zip\?api\=v2
 
 ENV EPSOS_PROPS_PATH /opt/epsos-configuration/
+
+WORKDIR /opt/epsos-configuration/
+
+ADD ./configmanager.hibernate.xml  /opt/epsos-configuration/
+
+RUN mkdir -p $EPSOS_PROPS_PATH/cert/PPT/conf
+
+WORKDIR /opt/epsos-configuration/cert/PPT/
+
+ADD ./cacert.sh /opt/epsos-configuration/cert/PPT/
+
+ADD ./startup.sh /opt/startup.sh
+
+ADD conf/* /opt/epsos-configuration/cert/PPT/conf/
+
+ADD selfcert.sh /opt/epsos-configuration/cert/PPT/
+
+ADD server.xml /etc/tomcat7
+
+EXPOSE 8080
+
+CMD ["/bin/bash", "/opt/startup.sh"]
