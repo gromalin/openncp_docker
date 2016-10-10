@@ -39,6 +39,8 @@ ADD ./configmanager.hibernate.xml  /opt/epsos-configuration_tmp/
 
 ADD ./cacert.sh /opt/epsos-configuration_tmp/cert/PPT/
 
+ADD ./server.xml /etc/tomcat7
+
 ADD conf/* /opt/epsos-configuration_tmp/cert/PPT/conf/
 
 ADD ./selfcert.sh /opt/epsos-configuration_tmp/cert/PPT/

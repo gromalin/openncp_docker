@@ -84,6 +84,7 @@
              keystorePass="rootroot"
              truststoreFile="/opt/epsos-configuration/cert/PPT/keystore/fr-truststore.jks"
              truststorePass="rootroot"/>
+
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
