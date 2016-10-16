@@ -1,0 +1,31 @@
+<Context>
+
+
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+        <Resource name="jdbc/TSAM" auth="Container" type="javax.sql.DataSource"
+                   maxActive="2" maxIdle="2" maxWait="-1"
+                   root="root" password="rootroot" driverClassName="com.mysql.jdbc.Driver"
+                   url="jdbc:mysql://mysql:3306/epsos_properties?zeroDateTimeBehavior=convertToNull"/>
+
+        <Resource name="jdbc/EADC_XCPD" auth="Container" type="javax.sql.DataSource"
+                   maxActive="2" maxIdle="2" maxWait="-1"
+                   root="root" password="rootroot" driverClassName="com.mysql.jdbc.Driver"
+                   url="jdbc:mysql://mysql:3306/epsos_properties?zeroDateTimeBehavior=convertToNull"/>
+
+        <Resource name="jdbc/EADC_XDR" auth="Container" type="javax.sql.DataSource"
+                   maxActive="2" maxIdle="2" maxWait="-1"
+                   root="root" password="rootroot" driverClassName="com.mysql.jdbc.Driver"
+                   url="jdbc:mysql://mysql:3306/epsos_properties?zeroDateTimeBehavior=convertToNull"/>
+
+        <Resource name="jdbc/EADC_XCA" auth="Container" type="javax.sql.DataSource"
+                   maxActive="2" maxIdle="2" maxWait="-1"
+                   root="root" password="rootroot" driverClassName="com.mysql.jdbc.Driver"
+                   url="jdbc:mysql://mysql:3306/epsos_properties?zeroDateTimeBehavior=convertToNull"/>
+
+        <Resource name="jdbc/ConfMgr" auth="Container" type="javax.sql.DataSource"
+                   maxActive="2" maxIdle="2" maxWait="-1"
+                   root="root" password="rootroot" driverClassName="com.mysql.jdbc.Driver"
+                   url="jdbc:mysql://mysql:3306/epsos_properties?zeroDateTimeBehavior=convertToNull"/>
+
+</Context>
