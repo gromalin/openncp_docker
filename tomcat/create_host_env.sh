@@ -4,6 +4,8 @@ DL_DIR=/opt/openncp-downloads
 COUNTRY_CODE=fr
 PASSWORD=rootroot
 ORGANIZATION=sante.gouv.fr
+DATABASE=mysql
+DATABASE_LOGIN=root
 
 if [ ! -f /usr/bin/java ]
 then
@@ -74,6 +76,13 @@ sed -i "s/^ServiceProviderSignatureAlias=ppt/ServiceProviderSignatureAlias=fr/" 
 sed -i "s/^OCSPSignatureAlias=ppt/OCSPSignatureAlias=fr/" /opt/epsos-configuration/cert/PPT/selfcert.sh
 
 (cd /opt/epsos-configuration/cert/PPT/ && sh /opt/epsos-configuration/cert/PPT/selfcert.sh)
+
+# Configuration hibernate
+
+sed -i "s/mysql:\/\/databasehost/mysql:\/\/$DATABASE/" /opt/epsos-configuration/configmanager.hibernate.xml
+sed -i "s/>username/>$DATABASE_LOGIN/" /opt/epsos-configuration/configmanager.hibernate.xml
+sed -i "s/>password/>$PASSWORD/" /opt/epsos-configuration/configmanager.hibernate.xml
+
 
 rm -fr $DL_DIR
 exit

@@ -79,7 +79,7 @@
              secure="true"
              clientAuth="false" 
              sslProtocol="TLS"
-             keyAlias="pfr.ncp-sp.epsos.sante.gouv.fr.fr"
+             keyAlias="fr.ncp-sp.epsos.spms.fr"
              keystoreFile="/opt/epsos-configuration/cert/PPT/keystore/fr-service-provider-keystore.jks"
              keystorePass="rootroot"
              truststoreFile="/opt/epsos-configuration/cert/PPT/keystore/fr-truststore.jks"
