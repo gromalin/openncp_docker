@@ -49,6 +49,8 @@ mkdir -p /opt/epsos-configuration/cert/PPT/conf
 wget https://openncp.atlassian.net/wiki/download/attachments/65142795/OpenNCP-configuration-utility.zip?api=v2 -O $DL_DIR/OpenNCP-configuration-utility.zip
 unzip $DL_DIR/OpenNCP-configuration-utility.zip -d /opt/epsos-configuration/
 
+cp openncp-configuration.properties /opt/epsos-configuration/OpenNCP-configuration-utility
+
 
 sed -i "s/>username/>$DATABASE_LOGIN/" /opt/epsos-configuration/OpenNCP-configuration-utility/database.config.xml
 sed -i "s/>password/>$PASSWORD/" /opt/epsos-configuration/OpenNCP-configuration-utility/database.config.xml
@@ -132,6 +134,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 
 # TRC-STS
 wget https://joinup.ec.europa.eu/nexus/content/repositories/releases/eu/europa/ec/joinup/ecc/epsos-trc-sts/2.3.2/epsos-trc-sts-2.3.2.war -O $CACHE_DIR/TRC-STS.war
+
+#TSL-Sync 
+wget https://joinup.ec.europa.eu/nexus/content/repositories/releases/eu/europa/ec/joinup/ecc/epsos-tslutils/epsos-tsl-sync/3.1.5/epsos-tsl-sync-3.1.5.jar -O $CACHE_DIR/epsos-tsl-sync-3.1.5.jar 
 
 rm -fr $DL_DIR
 exit
