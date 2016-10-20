@@ -13,6 +13,13 @@ then
   apt-get install -y default-jre
 fi
 
+if [ ! -f /usr/bin/unzip ]
+then
+  apt-get install -y zip
+fi
+
+
+
 if [ -d /opt/epsos-configuration ]
 then
   echo "/opt/epsos-configuration present. Exiting."
@@ -49,7 +56,9 @@ mkdir -p /opt/epsos-configuration/cert/PPT/conf
 wget https://openncp.atlassian.net/wiki/download/attachments/65142795/OpenNCP-configuration-utility.zip?api=v2 -O $DL_DIR/OpenNCP-configuration-utility.zip
 unzip $DL_DIR/OpenNCP-configuration-utility.zip -d /opt/epsos-configuration/
 
-cp openncp-configuration.properties /opt/epsos-configuration/OpenNCP-configuration-utility
+wget https://joinup.ec.europa.eu/nexus/content/repositories/releases/eu/europa/ec/joinup/ecc/ncp-configuration-util/1.0.2/ncp-configuration-util-1.0.2.jar -O /opt/epsos-configuration/ncp-configuration-util-1.0.2.jar
+
+cp conf/openncp-configuration.properties /opt/epsos-configuration/OpenNCP-configuration-utility
 
 
 sed -i "s/>username/>$DATABASE_LOGIN/" /opt/epsos-configuration/OpenNCP-configuration-utility/database.config.xml
